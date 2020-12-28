@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 04:22 PM
+-- Generation Time: Dec 28, 2020 at 02:43 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -24,19 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `adminID` int(14) NOT NULL,
-  `adminName` varchar(50) DEFAULT NULL,
-  `adminNum` varchar(50) DEFAULT NULL,
-  `adminPassword` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `booking`
 --
 
@@ -45,10 +33,10 @@ CREATE TABLE `booking` (
   `bDate` date DEFAULT NULL,
   `bTime` time DEFAULT NULL,
   `bTotalPrice` decimal(10,0) DEFAULT NULL,
+  `rating` int(5) DEFAULT NULL,
   `custID` int(11) NOT NULL,
   `serviceID` int(11) NOT NULL,
-  `staffID` int(14) NOT NULL,
-  `adminID` int(14) NOT NULL
+  `staffID` varchar(14) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -59,11 +47,22 @@ CREATE TABLE `booking` (
 
 CREATE TABLE `customer` (
   `custID` int(11) NOT NULL,
-  `custName` varchar(255) DEFAULT NULL,
-  `custNum` varchar(11) DEFAULT NULL,
+  `cName` varchar(255) DEFAULT NULL,
+  `cNum` varchar(11) DEFAULT NULL,
   `cEmail` varchar(255) DEFAULT NULL,
   `cPassword` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`custID`, `cName`, `cNum`, `cEmail`, `cPassword`) VALUES
+(1, 'ABU', '1234567899', 'abu@gmail.com', '9562'),
+(2, 'ALI', '1234567899', 'ali@gmail.com', '9562'),
+(3, 'AHMAD', '5974131343', 'ahmad@gmail.com', '3654'),
+(4, 'MUTHU', '6685623325', 'muthu@gmail.com', '7963'),
+(5, 'ALI', '1234567899', 'ali@gmail.com', '9562');
 
 -- --------------------------------------------------------
 
@@ -76,9 +75,8 @@ CREATE TABLE `forum` (
   `forumTitle` varchar(255) DEFAULT NULL,
   `forumDescription` varchar(255) DEFAULT NULL,
   `forumDate` date DEFAULT NULL,
-  `staffID` int(14) NOT NULL,
   `custID` int(11) NOT NULL,
-  `adminID` int(14) NOT NULL
+  `staffID` varchar(14) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -93,21 +91,7 @@ CREATE TABLE `homepage` (
   `vLocation` varchar(255) DEFAULT NULL,
   `vPhone` varchar(11) DEFAULT NULL,
   `vDetails` varchar(255) DEFAULT NULL,
-  `adminID` int(14) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rating`
---
-
-CREATE TABLE `rating` (
-  `ratingID` int(11) NOT NULL,
-  `adminID` int(11) DEFAULT NULL,
-  `staffiD` int(11) DEFAULT NULL,
-  `custID` int(11) DEFAULT NULL,
-  `bookingID` int(11) DEFAULT NULL
+  `staffID` varchar(14) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,7 +105,7 @@ CREATE TABLE `service` (
   `svName` varchar(255) DEFAULT NULL,
   `svPrice` decimal(10,0) DEFAULT NULL,
   `svDescription` varchar(255) DEFAULT NULL,
-  `staffID` int(14) NOT NULL
+  `staffID` varchar(14) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -131,22 +115,24 @@ CREATE TABLE `service` (
 --
 
 CREATE TABLE `staff` (
-  `staffID` int(14) NOT NULL,
+  `staffID` varchar(14) NOT NULL DEFAULT '',
   `sName` varchar(255) DEFAULT NULL,
   `sNum` varchar(11) DEFAULT NULL,
   `sPassword` varchar(50) DEFAULT NULL,
-  `adminID` int(14) NOT NULL
+  `adminID` varchar(14) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`staffID`, `sName`, `sNum`, `sPassword`, `adminID`) VALUES
+('990508565498', 'ALI', '1234567899', '1234', '990508565498'),
+('99232623232', 'ABU', '1234567899', '9562', NULL);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminID`);
 
 --
 -- Indexes for table `booking`
@@ -155,8 +141,7 @@ ALTER TABLE `booking`
   ADD PRIMARY KEY (`bookingID`),
   ADD KEY `fk_booking_customer` (`custID`),
   ADD KEY `fk_booking_service` (`serviceID`),
-  ADD KEY `fk_booking_staff` (`staffID`),
-  ADD KEY `fk_booking_admin` (`adminID`);
+  ADD KEY `staffID8` (`staffID`);
 
 --
 -- Indexes for table `customer`
@@ -170,39 +155,28 @@ ALTER TABLE `customer`
 ALTER TABLE `forum`
   ADD PRIMARY KEY (`forumID`),
   ADD KEY `fk_forum_customer` (`custID`),
-  ADD KEY `fk_forum_staff` (`staffID`),
-  ADD KEY `fk_forum_admin` (`adminID`);
+  ADD KEY `staffID` (`staffID`);
 
 --
 -- Indexes for table `homepage`
 --
 ALTER TABLE `homepage`
   ADD PRIMARY KEY (`vID`),
-  ADD KEY `fk_homepage_admin` (`adminID`);
-
---
--- Indexes for table `rating`
---
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`ratingID`),
-  ADD KEY `fk_rating_admin` (`adminID`),
-  ADD KEY `fk_rating_staff` (`staffiD`),
-  ADD KEY `fk_rating_cust` (`custID`),
-  ADD KEY `fk_rating_booking` (`bookingID`);
+  ADD KEY `staffID` (`staffID`);
 
 --
 -- Indexes for table `service`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`serviceID`),
-  ADD KEY `fk_service_staff` (`staffID`) USING BTREE;
+  ADD KEY `staffID` (`staffID`);
 
 --
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
-  ADD PRIMARY KEY (`staffID`),
-  ADD KEY `fk_staff_admin` (`adminID`);
+  ADD PRIMARY KEY (`staffID`) USING BTREE,
+  ADD KEY `FK_staff_staff` (`adminID`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -218,7 +192,7 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `custID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `forum`
@@ -240,45 +214,69 @@ ALTER TABLE `homepage`
 -- Constraints for table `booking`
 --
 ALTER TABLE `booking`
-  ADD CONSTRAINT `fk_booking_admin` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `_booking_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_booking_customer` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_booking_service` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_booking_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_booking_service` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `forum`
 --
 ALTER TABLE `forum`
-  ADD CONSTRAINT `fk_forum_admin` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_forum_customer` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_forum_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `_forum_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_forum_customer` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `homepage`
 --
 ALTER TABLE `homepage`
-  ADD CONSTRAINT `fk_homepage_admin` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `rating`
---
-ALTER TABLE `rating`
-  ADD CONSTRAINT `fk_rating_admin` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_rating_booking` FOREIGN KEY (`bookingID`) REFERENCES `booking` (`bookingID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_rating_cust` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_rating_staff` FOREIGN KEY (`staffiD`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK1_homepage_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `service`
 --
 ALTER TABLE `service`
-  ADD CONSTRAINT `FK_service_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK1_service_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `staff`
 --
 ALTER TABLE `staff`
-  ADD CONSTRAINT `fk_staff_admin` FOREIGN KEY (`adminID`) REFERENCES `admin` (`adminID`);
+  ADD CONSTRAINT `adminID_fk` FOREIGN KEY (`adminID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+--
+-- Metadata
+--
+USE `phpmyadmin`;
+
+--
+-- Metadata for table booking
+--
+
+--
+-- Metadata for table customer
+--
+
+--
+-- Metadata for table forum
+--
+
+--
+-- Metadata for table homepage
+--
+
+--
+-- Metadata for table service
+--
+
+--
+-- Metadata for table staff
+--
+
+--
+-- Metadata for database venus
+--
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
