@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2020 at 02:43 PM
+-- Generation Time: Jan 04, 2021 at 04:07 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -35,8 +35,8 @@ CREATE TABLE `booking` (
   `bTotalPrice` decimal(10,0) DEFAULT NULL,
   `rating` int(5) DEFAULT NULL,
   `custID` int(11) NOT NULL,
-  `serviceID` int(11) NOT NULL,
-  `staffID` varchar(14) DEFAULT NULL
+  `staffID` varchar(14) DEFAULT NULL,
+  `serviceID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -115,7 +115,7 @@ CREATE TABLE `service` (
 --
 
 CREATE TABLE `staff` (
-  `staffID` varchar(14) NOT NULL DEFAULT '',
+  `staffID` varchar(14) NOT NULL,
   `sName` varchar(255) DEFAULT NULL,
   `sNum` varchar(11) DEFAULT NULL,
   `sPassword` varchar(50) DEFAULT NULL,
@@ -140,8 +140,8 @@ INSERT INTO `staff` (`staffID`, `sName`, `sNum`, `sPassword`, `adminID`) VALUES
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`bookingID`),
   ADD KEY `fk_booking_customer` (`custID`),
-  ADD KEY `fk_booking_service` (`serviceID`),
-  ADD KEY `staffID8` (`staffID`);
+  ADD KEY `staffID8` (`staffID`),
+  ADD KEY `serviceID` (`serviceID`);
 
 --
 -- Indexes for table `customer`
@@ -186,7 +186,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -207,6 +207,12 @@ ALTER TABLE `homepage`
   MODIFY `vID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `service`
+--
+ALTER TABLE `service`
+  MODIFY `serviceID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -214,9 +220,9 @@ ALTER TABLE `homepage`
 -- Constraints for table `booking`
 --
 ALTER TABLE `booking`
+  ADD CONSTRAINT `_booking_service` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `_booking_staff` FOREIGN KEY (`staffID`) REFERENCES `staff` (`staffID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_booking_customer` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_booking_service` FOREIGN KEY (`serviceID`) REFERENCES `service` (`serviceID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_booking_customer` FOREIGN KEY (`custID`) REFERENCES `customer` (`custID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `forum`
