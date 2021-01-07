@@ -74,7 +74,7 @@
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Booking</span></a>
             </li>
@@ -101,7 +101,7 @@
                     <span>Forum</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="customer-view-booking.jsp">
+                <a class="nav-link" href="customer-view-forum.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>My Forum</span></a>
             </li>
@@ -193,24 +193,30 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Update Forum</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Add Booking</h6>
                                 </div>
                                 <div class="card-body">
                                      <form class="user" action="AddServiceController" method="post">
-                                <div class="form-group">Forum Title
+                                <div class="form-group">Service Name
                                     <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum Title">
+                                        placeholder="Service Name">
                                 </div>
-                                <div class="form-group">Forum Description
+                                <div class="form-group">Booking Date
                                     <input type="text" class="form-control form-control-user" id="svName"
-                                        placeholder="Forum Description">
+                                        placeholder="Booking Date">
                                 </div>
-                                <div class="form-group">Forum Date
+                                <div class="form-group">Booking Time
                                     <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Forum Date">
+                                        placeholder="Booking Time">
                                 </div>
-                                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block">
+                                <div class="form-group">Total Price
+                                    <input type="text" class="form-control form-control-user" id="svPrice"
+                                        placeholder="Total Price">
+                                </div>
+                                <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block"><br>
+                                <a href="customer-forum.jsp">
                                 <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
+                                </a>
                             </form>
                                 </div>
                             </div>

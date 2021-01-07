@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="customer-booking.jsp">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="customer-booking.jsp">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -59,7 +59,7 @@
 
               <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="customer-profile.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>My Profile</span></a>
             </li>
@@ -96,20 +96,21 @@
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
+                <a class="nav-link" href="customer-forum.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Forum</span></a>
             </li>
-			<li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
+            <li class="nav-item">
+                <a class="nav-link" href="customer-view-forum.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>My Forum</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Forum</span></a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
            
@@ -208,8 +209,9 @@
                                     <input type="text" class="form-control form-control-user" id="svPrice"
                                         placeholder="Forum Date">
                                 </div>
-                                <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block">
-                                <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
+                                <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block"><br>
+                                <a href="customer-forum.jsp">
+                                <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block"></a>
                             </form>
                                 </div>
                             </div>
