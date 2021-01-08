@@ -4,6 +4,7 @@ public class Customer {
 	
 	private int custID;
 	private String cName, cNum, cEmail, cPassword;
+	public boolean valid;
 	
 	public int getCustID() {
 		return custID;
@@ -34,6 +35,15 @@ public class Customer {
 	}
 	public void setcPassword(String cPassword) {
 		this.cPassword = cPassword;
+	}
+	public void setValid(boolean valid) {
+		this.valid = valid;
+		
+	}
+
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return valid;
 	}
 	
 }
