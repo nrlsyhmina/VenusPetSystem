@@ -93,7 +93,7 @@ public class ServiceDAO {
             System.out.println("failed: An Exception has occurred! " + ex);
         }return "Oops.. Something went wrong there..!";
 	}
-
+	
 	
 	public static List<Service> getServiceList() throws ClassNotFoundException, SQLException
 	{
@@ -115,10 +115,18 @@ public class ServiceDAO {
 			service.add(s);
 		}
 		
-		
-		
-		
 		return service;
 	}
+	
+	public void deleteService(int serviceID) {
+	     try {
+	     con = ConnectionManager.getConnection();
+	     ps=con.prepareStatement("delete from service where serviceID=?");
+	     ps.setInt(1,serviceID);
+	     ps.executeUpdate();
+	     } catch (SQLException e) {
+	         System.out.println("failed: tak boleh delete data customer " + e);
+	     }
+	    }
 
 }
