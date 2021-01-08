@@ -60,15 +60,15 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Login</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
+                                     <form class="user" action="LoginController" method="post">
                                 
-                                <div class="form-group">Username
-                                    <input type="text" class="form-control form-control-user" id="custName"
-                                        placeholder="Name"y>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" name="cEmail"
+                                        placeholder="Email">
                                 </div>
-                                <div class="form-group">Password
-                                    <input type="text" class="form-control form-control-user" id="custNum"
-                                        placeholder="Phone Number">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="cPassword"
+                                        placeholder="Password">
                                 </div>                              
                                 	<input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                                 <br>
@@ -115,7 +115,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Ã—</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
