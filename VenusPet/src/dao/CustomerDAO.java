@@ -18,6 +18,65 @@ public class CustomerDAO {
     static ResultSet rs = null;
     static PreparedStatement ps=null;
     static Statement stmt=null;
+    
+    public static Customer login(Customer bean) {
+		// preparing some objects for connection 		
+		Statement stmt = null;
+		String cEmail = bean.getcEmail();
+		String cName = bean.getcName();
+		String cPassword = bean.getcPassword();
+		String searchQuery = "select * from customer where cEmail='" 
+		+ cEmail + "' AND cPassword='" + cPassword + "'";
+		//------prepared statement
+		
+		try {
+			// connect to DB
+			currentCon = ConnectionManager.getConnection();
+			stmt = currentCon.createStatement();
+			rs = stmt.executeQuery(searchQuery);
+			boolean more = rs.next();
+			// if user does not exist
+			if (!more) {
+				System.out.println("Sorry, you are not a registered user! " + "Please sign up first");
+				bean.setValid(false);
+			}
+			// if user exists
+			else if (more) {
+				cName = rs.getString("cName");
+				cEmail = rs.getString("cEmail");
+				cPassword = rs.getString("cPassword");
+				int custID = rs.getInt("custID");
+				bean.setcName(cName);
+				bean.setcEmail(cEmail);
+				bean.setcPassword(cPassword);
+				bean.setCustID(custID);
+				bean.setValid(true);
+			}
+		} catch (Exception ex) {
+			System.out.println("Log In failed: An Exception has occurred! " + ex);
+		} // some exception handling
+		finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (Exception e) { }
+				rs = null;
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (Exception e) { }
+				stmt = null;
+			}
+			if (currentCon != null) {
+				try {
+					currentCon.close();
+				} catch (Exception e) { }
+				currentCon = null;
+			}
+		}
+		return bean;
+	}
         
         
     //add data
@@ -60,7 +119,7 @@ public class CustomerDAO {
     //list data
     public static List<Customer> getAllCustomer() 
     {
-        List<Customer> sups = new ArrayList<Customer>();
+        List<Customer> customerList = new ArrayList<Customer>();
         try {
         currentCon = ConnectionManager.getConnection();
         stmt = currentCon.createStatement();
@@ -72,12 +131,12 @@ public class CustomerDAO {
         customer.setcEmail(rs.getString("cEmail"));
         customer.setcNum(rs.getString("cNum"));
         customer.setcPassword(rs.getString("cPassword"));
-        sups.add(customer);
+        customerList.add(customer);
         }
         } catch (SQLException e) {
             System.out.println("failed: tak boleh get data all " + e);
             }
-            return sups;
+            return customerList;
     }
 
     //select a data
