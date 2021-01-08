@@ -70,6 +70,21 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>View Admin</span></a>
             </li>
+            
+             <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="addService.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Add Service</span></a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="listService.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>View Service</span></a>
+            </li>
 
 
             <!-- Divider -->
@@ -190,7 +205,8 @@
                                             <th>Service Price</th>
                                             <th>Service Description</th>
                                             <th>Staff ID</th>
-                                            <th>Edit</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                          
@@ -204,6 +220,8 @@
 							             <td><c:out value="${service.staffID}" /></td>
                                             <td><a href="UpdateServiceController?action=update&serviceID=<c:out
             value="${service.serviceID}" />" class="w3-btn w3-green w3-round-large" >Update</a></td>
+              <td><a href="DeleteServiceController?action=delete&serviceID=<c:out
+            value="${service.serviceID}" />" class="w3-btn w3-red w3-round-large">Delete</a></td>
                                         </tr>
                                         </c:forEach>
                                         
@@ -226,7 +244,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Venus Pet</span>
                     </div>
                 </div>
             </footer>
