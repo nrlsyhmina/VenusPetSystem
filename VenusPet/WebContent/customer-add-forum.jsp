@@ -197,15 +197,11 @@
                                 </div>
                                 <div class="card-body">
                                      <form class="user" action="AddServiceController" method="post">
-                                <div class="form-group">Forum Title
+                                <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="serviceID"
                                         placeholder="Forum Title">
                                 </div>
-                                <div class="form-group">Forum Description
-                                    <input type="text" class="form-control form-control-user" id="svName"
-                                        placeholder="Forum Description">
-                                </div>
-                                <div class="form-group">Forum Date
+                                <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="svPrice"
                                         placeholder="Forum Date">
                                 </div>

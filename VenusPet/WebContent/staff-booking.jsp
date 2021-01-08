@@ -54,36 +54,34 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Profile
-            </div>
-
-              <!-- Nav Item - Admin -->
-             <li class="nav-item">
-                <a class="nav-link" href="customer-profile.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>My Profile</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
                 Booking
             </div>
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Booking</span></a>
-            </li>
-            
-             <!-- Nav Item - Admin -->
-             <li class="nav-item">
-                <a class="nav-link" href="customer-booking.jsp">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>View Booking</span></a>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Service
+            </div>
+
+            <!-- Nav Item - Admin -->
+             <li class="nav-item">
+                <a class="nav-link" href="staff-add-service.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Add Service</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="staff-view-service.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>View Service</span></a>
             </li>
             
             <!-- Divider -->
@@ -96,19 +94,9 @@
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-forum.jsp">
+                <a class="nav-link" href="staff-forum.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Forum</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="customer-view-forum.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>My Forum</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="customer-add-forum.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Forum</span></a>
             </li>
 
             <!-- Divider -->
@@ -183,41 +171,58 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <!-- Content Row -->
 
-                     <!-- Content Row -->
                     <div class="row">
-
-                        <!-- Content Column -->
                         <div class="col mb-4">
 
-                            <!-- Project Card Example -->
+                            <!-- Booking -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Update Forum</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Bookings</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum ID">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum Title">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Forum Date">
-                                </div>
-                                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block"><br>
-                                <a href="customer-forum.jsp">
-                                <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
-                                </a>
-                            </form>
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Booking ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Booking Date</th>
+                                            <th>Booking Time</th>
+                                            <th>Service</th>
+                                            <th>Total Price</th>
+                                            <th>Staff Name</th>
+                                            <th>Rating</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                         
+                                    <tbody>
+                                    <c:forEach items="${service}" var="service" begin="0" varStatus="count">
+                                        <tr>
+                                        <td><c:out value="${count.count}"/></td>
+							            <td><c:out value="${service.serviceID}" /></td>
+							            <td><c:out value="${service.svName}" /></td>
+							            <td><c:out value="${service.svPrice}" /></td>
+							            <td><c:out value="${service.svDescription}" /></td>
+							            <td><c:out value="${service.staffID}" /></td>
+							            <td><c:out value="${service.staffID}" /></td>
+							            <td><c:out value="${service.staffID}" /></td>
+							            <td><c:out value="${service.staffID}" /></td>
+                                        <td><a target="_blank" href="staff-update-booking.jsp">Update</a></td>
+                                        <td><a target="_blank" href="">Delete</a></td>
+                                        </tr>
+                                        </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                             </div>
 
-                            
                         </div>
                     </div>
 

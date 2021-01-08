@@ -54,36 +54,34 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Profile
-            </div>
-
-              <!-- Nav Item - Admin -->
-             <li class="nav-item">
-                <a class="nav-link" href="customer-profile.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>My Profile</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
                 Booking
             </div>
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Booking</span></a>
-            </li>
-            
-             <!-- Nav Item - Admin -->
-             <li class="nav-item">
-                <a class="nav-link" href="customer-booking.jsp">
+                <a class="nav-link" href="staff-booking.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>View Booking</span></a>
+            </li>
+            
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Service
+            </div>
+
+            <!-- Nav Item - Admin -->
+             <li class="nav-item">
+                <a class="nav-link" href="staff-add-service.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Add Service</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="staff-view-service.jsp">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>View Service</span></a>
             </li>
             
             <!-- Divider -->
@@ -96,19 +94,9 @@
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-forum.jsp">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Forum</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="customer-view-forum.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>My Forum</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="customer-add-forum.jsp">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Add Forum</span></a>
             </li>
 
             <!-- Divider -->
@@ -193,31 +181,39 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Update Forum</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Forum</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum ID">
+                                
+                                <div class="card shadow mb-4">
+                                	<div class="card-header py-3">
+	                                	<div class="form-group">Retrieve Forum Title
+		                                    <button class="btn"><i class="fa fa-trash"></i></button>
+		                                    <input type="text" class="form-control form-control-user" id="custNum"
+		                                        placeholder="Retrieve Comment" readonly><br>
+		                                    <input type="text" class="form-control form-control-user" id="custNum"
+		                                        placeholder="Add Comment">
+		                                    <button class="btn"><i class="fa fa-share"></i></button>		
+		                                    <button class="btn"><i class="fa fa-trash"></i></button>                                        
+	                                    </div>
+                                	</div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum Title">
+                                
+                                <div class="card shadow mb-4">
+                                	<div class="card-header py-3">
+	                                	<div class="form-group">Retrieve Forum Title
+		                                    <button class="btn"><i class="fa fa-trash"></i></button>
+		                                    <input type="text" class="form-control form-control-user" id="custNum"
+		                                        placeholder="Retrieve Comment" readonly><br>
+		                                    <input type="text" class="form-control form-control-user" id="custNum"
+		                                        placeholder="Add Comment">
+		                                    <button class="btn"><i class="fa fa-share"></i></button>		
+		                                    <button class="btn"><i class="fa fa-trash"></i></button>                                        
+	                                    </div>
+                                	</div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Forum Date">
                                 </div>
-                                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block"><br>
-                                <a href="customer-forum.jsp">
-                                <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
-                                </a>
-                            </form>
-                                </div>
-                            </div>
-
-                            
+                            </div>                          
                         </div>
                     </div>
 

@@ -74,7 +74,7 @@
 
             <!-- Nav Item - Admin -->
              <li class="nav-item">
-                <a class="nav-link" href="customer-add-booking.jsp">
+                <a class="nav-link" href="add-booking.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Booking</span></a>
             </li>
@@ -101,7 +101,7 @@
                     <span>Forum</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="customer-view-booking.jsp">
+                <a class="nav-link" href="customer-view-forum.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>My Forum</span></a>
             </li>
@@ -200,7 +200,7 @@
                                 
                                 <div class="card shadow mb-4">
                                 	<div class="card-header py-3">
-	                                	<div class="form-group">Retrieve Forum Title & Description
+	                                	<div class="form-group">Retrieve Forum Title
 		                                    <input type="text" class="form-control form-control-user" id="custNum"
 		                                        placeholder="Retrieve Comment" readonly><br>
 		                                    <input type="text" class="form-control form-control-user" id="custNum"
@@ -213,7 +213,7 @@
                                 
                                 <div class="card shadow mb-4">
                                 	<div class="card-header py-3">
-	                                	<div class="form-group">Retrieve Forum Title & Description
+	                                	<div class="form-group">Retrieve Forum Title
 		                                    <input type="text" class="form-control form-control-user" id="custNum"
 		                                        placeholder="Retrieve Comment" readonly><br>
 		                                    <input type="text" class="form-control form-control-user" id="custNum"

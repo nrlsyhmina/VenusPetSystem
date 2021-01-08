@@ -203,7 +203,6 @@
                                             <th>Forum Title</th>
                                             <th>Forum Description</th>
                                             <th>Forum Date</th>
-                                            <th>Comment</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -217,7 +216,6 @@
 							            <td><c:out value="${service.svName}" /></td>
 							            <td><c:out value="${service.svPrice}" /></td>
 							            <td><c:out value="${service.svDescription}" /></td>
-							            <td><c:out value="${service.staffID}" /></td>
                                         <td><a target="_blank" href="customer-update-forum.jsp">Edit</a></td>
                                         <td><a target="_blank" href="">Delete</a></td>
                                         </tr>
