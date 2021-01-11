@@ -184,35 +184,31 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update Booking</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
+                                     <form class="user" action="updateBookingController" method="post">
+                                  	<div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="bookingID"  title="bookingID" placeholder="Booking ID" value="<c:out value="${booking.bookingID}"/>" required>
+			                  </div>
+                               		 <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="custID"  placeholder="CUSTOMER'S NAME" value="<c:out value="${booking.custID}"/>" required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="date" class="form-control form-control-user" name="bDate" maxlength="12" placeholder="DATE" value="<c:out value="${booking.bDate}"/>" required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="time" class="form-control form-control-user" name="bTime" placeholder="TIME" value="<c:out value="${booking.bTime}"/>" required>
+			                  </div>
+			                   <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="serviceID"  placeholder="SERVICE'S NAME"  value="<c:out value="${booking.serviceID}"/>" required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="number" class="form-control form-control-user" name="bTotalPrice"   placeholder="Total Price" value="<c:out value="${booking.bTotalPrice}"/>" readonly>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="staffID"  placeholder="STAFF'S NAME"  value="<c:out value="${booking.staffID}"/>" required>
+			                  </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="custID"
-                                        placeholder="Booking ID" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="custName"
-                                        placeholder="Customer Name" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" class="form-control form-control-user" id="custNum"
-                                        placeholder="Booking Date" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="custEmail"
-                                        placeholder="Booking Time" readonly >
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="custPassword"
-                                        placeholder="Service" readonly>
-                                </div>   
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="custEmail"
-                                        placeholder="Total Price" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="custEmail"
-                                        placeholder="Staff Name">
-                                </div>                           
+                                    <input type="text" class="form-control form-control-user" name="rating" placeholder="Rate" value="<c:out value="${booking.rating}"/>" readonly>
+                                </div>            
                                 	<input type="submit" value="Update Booking" class="btn btn-primary btn-user btn-block">
                                 <br>
                                 <a href="staff-booking.jsp">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -196,38 +197,31 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Rate Booking</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
-                                <div class="form-group">Booking ID
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Booking ID" readonly>
-                                </div>
-                                <div class="form-group">Customer Name
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Customer Name" readonly>
-                                </div>
-                                <div class="form-group">Booking Date
-                                    <input type="text" class="form-control form-control-user" id="svName"
-                                        placeholder="Booking Date" readonly>
-                                </div>
-                                <div class="form-group">Booking Time
-                                    <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Booking Time" readonly>
-                                </div>
-                                <div class="form-group">Service Name
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Service Name" readonly>
-                                </div>
-                                <div class="form-group">Total Price
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Total Price" readonly>
-                                </div>
-                                <div class="form-group">Staff Name
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Staff Name" readonly>
-                                </div>
-                                <div class="form-group">Rate
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Rate">
+                                     <form class="user" action="updateBookingController" method="post">
+                                  	<div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="bookingID"  title="bookingID" placeholder="Booking ID" value="<c:out value="${booking.bookingID}"/>" required>
+			                  </div>
+                               		 <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="custID"  placeholder="CUSTOMER'S NAME" value="<c:out value="${booking.custID}"/>" required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="date" class="form-control form-control-user" name="bDate" maxlength="12" placeholder="DATE" value="<c:out value="${booking.bDate}"/>" required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="time" class="form-control form-control-user" name="bTime" placeholder="TIME" value="<c:out value="${booking.bTime}"/>" required>
+			                  </div>
+			                   <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="serviceID"  placeholder="SERVICE'S NAME"  value="<c:out value="${booking.serviceID}"/>" required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="number" class="form-control form-control-user" name="bTotalPrice"   placeholder="Total Price" value="<c:out value="${booking.bTotalPrice}"/>" readonly>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="staffID"  placeholder="STAFF'S NAME"  value="<c:out value="${booking.staffID}"/>" readonly>
+			                  </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="rating"
+                                        placeholder="Rate" value="<c:out value="${booking.rating}"/>">
                                 </div>
                                 <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block"><br>
 	                                <input onclick="window.location.href='customer-booking.jsp';" type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
@@ -273,7 +267,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Ã—</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>

@@ -195,24 +195,27 @@
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Add Booking</h6>
                                 </div>
-                                <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
-                                <div class="form-group">Service Name
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Service Name">
-                                </div>
-                                <div class="form-group">Booking Date
-                                    <input type="text" class="form-control form-control-user" id="svName"
-                                        placeholder="Booking Date">
-                                </div>
-                                <div class="form-group">Booking Time
-                                    <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Booking Time">
-                                </div>
-                                <div class="form-group">Total Price
-                                    <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Total Price">
-                                </div>
+                                 <div class="card-body">
+                                     <form  action="addBookingController" method="post">
+                                     <div class="form-group">
+			                    <input type="hidden" class="form-control form-control-user" name="bookingID"  required>
+			                  </div>
+                               		<div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="custID" maxlength="12" placeholder="customer"   required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="date" class="form-control form-control-user" name="bDate" maxlength="12" placeholder="DATE"  required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="time" class="form-control form-control-user" name="bTime" placeholder="TIME" required>
+			                  </div>
+			                   <div class="form-group">
+			                    <input type="text" class="form-control form-control-user" name="serviceID"  placeholder="SERVICE'S NAME"   required>
+			                  </div>
+			                  <div class="form-group">
+			                    <input type="number" class="form-control form-control-user" name="bTotalPrice"   placeholder="Total Price" required>
+			                  </div>
+
                                 <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block"><br>
                                 <a href="customer-forum.jsp">
                                 <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
@@ -260,7 +263,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Ã—</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>

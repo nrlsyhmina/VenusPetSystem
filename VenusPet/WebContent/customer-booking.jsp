@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,29 +200,33 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Booking ID</th>
-                                            <th>Customer Name</th>
+                                            <th>Customer's Name</th>
                                             <th>Booking Date</th>
                                             <th>Booking Time</th>
-                                            <th>Service</th>
+                                            <th>Service </th>
                                             <th>Total Price</th>
-                                            <th>Staff Name</th>
-                                            <th>Rate</th>
+                                            <th>Rating</th>
+                                            <th>Staff's Name</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                          
                                     <tbody>
-                                    <c:forEach items="${service}" var="service" begin="0" varStatus="count">
+                                   <c:forEach items="${booking}" var="booking" begin="0" varStatus="count">
                                         <tr>
-                                        <td><c:out value="${count.count}"/></td>
-							            <td><c:out value="${service.serviceID}" /></td>
-							            <td><c:out value="${service.svName}" /></td>
-							            <td><c:out value="${service.svPrice}" /></td>
-							            <td><c:out value="${service.svDescription}" /></td>
-							            <td><c:out value="${service.staffID}" /></td>
-							            <td><c:out value="${service.staffID}" /></td>
-							            <td><c:out value="${service.staffID}" /></td>
-                                        <td><a target="_blank" href="customer-rate.jsp">Rate</a></td>
+                                        <td><c:out value="${booking.bookingID}"/></td>
+                                        <td><c:out value="${booking.custID}" /></td>
+							            <td><c:out value="${booking.bDate}" /></td>
+							            <td><c:out value="${booking.bTime}" /></td>
+							            <td><c:out value="${booking.serviceID}" /></td>
+							            <td><c:out value="${booking.bTotalPrice}" /></td>
+							             <td><c:out value="${booking.rating}" /></td> 
+							            <td><c:out value="${booking.staffID}" /></td>
+                                        <td><a href="updateBookingController?action=update&bookingID=<c:out
+							            value="${booking.bookingID}" />" class="w3-btn w3-green w3-round-large" >Update</a></td>
+							              <td><a href="deleteBookingController?action=delete&bookingID=<c:out
+							            value="${booking.bookingID}" />" class="w3-btn w3-red w3-round-large">Delete</a></td>
                                         </tr>
                                         </c:forEach>
                                         
@@ -269,7 +274,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">Ã—</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
