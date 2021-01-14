@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -197,32 +198,21 @@
                                     <a href="customer-view-forum.jsp"><h6 class="m-0 font-weight-bold text-primary">View Forum</h6></a>
                                 </div>
                                 <div class="card-body">
-                                
+                                <c:forEach items="${forum}" var="forum" begin="0" varStatus="count">
                                 <div class="card shadow mb-4">
                                 	<div class="card-header py-3">
 	                                	<div class="form-group">Retrieve Forum Title
-		                                    <input type="text" class="form-control form-control-user" id="custNum"
-		                                        placeholder="Retrieve Comment" readonly><br>
-		                                    <input type="text" class="form-control form-control-user" id="custNum"
-		                                        placeholder="Add Comment">
-		                                    <button class="btn"><i class="fa fa-share"></i></button>		
-		                                    <button class="btn"><i class="fa fa-trash"></i></button>                                        
+		                                    <input type="text" class="form-control form-control-user" name="forumTitle" id="forumTitle"
+		                                        placeholder="Retrieve Comment" value="<c:out value="${forum.forumTitle}"/>" readonly><br>
+		                                    <input type="text" class="form-control form-control-user" name="forumDescription" id="forumDescription"
+		                                        placeholder="Add Comment" value="<c:out value="${forum.forumDescription}"/>">
+		                                    <button class="btn"><a href="updateForumCustomerController?action=update&forumID=<c:out
+							            value="${forum.forumID}" />" class="w3-btn w3-green w3-round-large" onclick="ConfirmUpdate()">Update</a></button>		
+		                                                                          
 	                                    </div>
                                 	</div>
                                 </div>
-                                
-                                <div class="card shadow mb-4">
-                                	<div class="card-header py-3">
-	                                	<div class="form-group">Retrieve Forum Title
-		                                    <input type="text" class="form-control form-control-user" id="custNum"
-		                                        placeholder="Retrieve Comment" readonly><br>
-		                                    <input type="text" class="form-control form-control-user" id="custNum"
-		                                        placeholder="Add Comment">
-		                                    <button class="btn"><i class="fa fa-share"></i></button>		
-		                                    <button class="btn"><i class="fa fa-trash"></i></button>                                        
-	                                    </div>
-                                	</div>
-                                </div>
+                                </c:forEach>
                                 </div>
                             </div>                          
                         </div>
@@ -276,6 +266,15 @@
     </div>
 
     <script src="js.js"></script>
-
+    <script>
+    function ConfirmUpdate()
+    {
+      var x = confirm("Are you sure you want to update?");
+      if (x)
+          return true;
+      else
+        return false;
+    }
+    </script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -199,25 +200,25 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Forum ID</th>
                                             <th>Forum Title</th>
-                                            <th>Forum Description</th>
                                             <th>Forum Date</th>
+                                            <th>Customer's Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                          
                                     <tbody>
-                                    <c:forEach items="${service}" var="service" begin="0" varStatus="count">
+                                    <c:forEach items="${forum}" var="forum" begin="0" varStatus="count">
                                         <tr>
-                                        <td><c:out value="${count.count}"/></td>
-							            <td><c:out value="${service.serviceID}" /></td>
-							            <td><c:out value="${service.svName}" /></td>
-							            <td><c:out value="${service.svPrice}" /></td>
-							            <td><c:out value="${service.svDescription}" /></td>
-                                        <td><a target="_blank" href="customer-update-forum.jsp">Edit</a></td>
-                                        <td><a target="_blank" href="">Delete</a></td>
+                                        <td><c:out value="${forum.forumID}"/></td>
+							            <td><c:out value="${forum.forumTitle}" /></td>
+							            <td><c:out value="${forum.forumDate}" /></td>
+							            <td><c:out value="${forum.custID}" /></td>
+                                        <td><a href="updateForumCustomerController?action=update&forumID=<c:out
+							            value="${forum.forumID}" />" class="w3-btn w3-green w3-round-large" >Update</a></td>
+							              <td><a href="deleteForumCustomerController?action=delete&forumID=<c:out
+							            value="${forum.forumID}" />" class="w3-btn w3-red w3-round-large">Delete</a></td>
                                         </tr>
                                         </c:forEach>
                                         

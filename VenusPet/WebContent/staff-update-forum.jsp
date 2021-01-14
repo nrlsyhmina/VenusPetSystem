@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,7 +107,7 @@
                     <span>My Forum</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="customer-add-forum.jsp">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Add Forum</span></a>
             </li>
@@ -193,25 +194,29 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Add Forum</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Update Forum</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="addForumCustomerController" method="post">
+                                     <form class="user" action="updateForumStaffController" method="post">
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control form-control-user" name="custID" id="custID"
-                                        placeholder="Sender/Customer id" value="<%= session.getAttribute("custID") %>" />
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="custID" id="custID" placeholder="Customer's Name"  value="<c:out value="${forum.custID}"/>" readonly>
+                                </div>
+                                    <input type="text" class="form-control form-control-user" name="forumID" id="forumID" placeholder="Forum ID" value="<c:out value="${forum.forumID}"/>" >
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="forumTitle" id="forumTitle"
-                                        placeholder="Forum Title">
+                                    <input type="text" class="form-control form-control-user" name="forumTitle" id="forumTitle" placeholder="Forum Title" value="<c:out value="${forum.forumTitle}"/>" >
                                 </div>
                                 <div class="form-group">
-                                    <input type="date" class="form-control form-control-user" name="forumDate" id="forumDate"
-                                        placeholder="Forum Date">
+                                    <input type="text" class="form-control form-control-user" name="forumDescription" id="forumDescription" placeholder="Forum Description" value="<c:out value="${forum.forumDescription}"/>" >
                                 </div>
-                                <input type="submit" value="Submit" class="btn btn-primary btn-user btn-block"><br>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control form-control-user" name="staffID" id="staffID" placeholder="Staff ID" value="<%= session.getAttribute("staffID") %>" /> 
+                                </div>
+                                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block" onclick="ConfirmUpdate()"><br>
                                 <a href="customer-forum.jsp">
-                                <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block"></a>
+                                <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block" >
+                                </a>
                             </form>
                                 </div>
                             </div>
@@ -258,25 +263,28 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <!-- Topbar Navbar -->
-                    <form
-                        class="text-right">
-                        <div class="input-group">
-                        <%
-							String cName = (String) session.getAttribute("cName");
-							String custID = (String) session.getAttribute("custID");
-						%>
-						Welcome <%=cName%> 
-						  <div class="topbar-divider d-none d-sm-block"></div>
-                            <a href="login.jsp">Logout</a>
-                        </div>
-                    </form>
-
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="js.js"></script>
+    <script src="js.js"></script>
+<script>
+    function ConfirmUpdate()
+    {
+      var x = confirm("Are you sure you want to update?");
+      if (x)
+          return true;
+      else
+        return false;
+    }
+
+    </script>
 
 </body>
 </html>

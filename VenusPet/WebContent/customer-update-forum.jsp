@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -196,20 +197,23 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update Forum</h6>
                                 </div>
                                 <div class="card-body">
-                                     <form class="user" action="AddServiceController" method="post">
+                                     <form class="user" action="updateForumCustomerController" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum ID">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control form-control-user" name="custID" id="custID" placeholder="Customer's Name"  value="<%= session.getAttribute("custID") %>" />required>
+                                </div>
+                                    <input type="text" class="form-control form-control-user" name="forumID" id="forumID" placeholder="Forum ID" value="<c:out value="${forum.forumID}"/>" >
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="serviceID"
-                                        placeholder="Forum Title">
+                                    <input type="text" class="form-control form-control-user" name="forumTitle" id="forumTitle" placeholder="Forum Title" value="<c:out value="${forum.forumTitle}"/>" >
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="svPrice"
-                                        placeholder="Forum Date">
+                                    <input type="text" class="form-control form-control-user" name="forumDescription" id="forumDescription" placeholder="Forum Description" value="<c:out value="${forum.forumDescription}"/>" >
                                 </div>
-                                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block"><br>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control form-control-user" name="staffID" id="staffID" placeholder="Staff ID" value="000000000000" >
+                                </div>
+                                <input type="submit" value="Update" class="btn btn-primary btn-user btn-block" onclick="ConfirmUpdate()"><br>
                                 <a href="customer-forum.jsp">
                                 <input type="submit" value="Cancel" class="btn btn-primary btn-user btn-block">
                                 </a>
@@ -269,6 +273,16 @@
     </div>
 
     <script src="js.js"></script>
+<script>
+    function ConfirmUpdate()
+    {
+      var x = confirm("Are you sure you want to update?");
+      if (x)
+          return true;
+      else
+        return false;
+    }
 
+    </script>
 </body>
 </html>
